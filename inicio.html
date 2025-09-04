@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=favorite,chat" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="logo">
+      <img src="logo_versao01_preenchida.png" alt="Logo ReviveAI">
+    </div>
+
+    <!-- Post 1 -->
+    <div class="post-container">
+      <div class="post-header">
+        <div class="user">
+          <img src="ey.jpg" alt="Logo" class="logo-img">Maria Yanagui
+        </div>
+        <div class="time">1 horas atrás</div>
+      </div>
+          <span class="location">Rua X, Londrina - PR</span>  
+      <div class="post-image">
+        <img src="entulhp.png" alt="Imagem do post">
+      </div>
+      <div class="post-caption">
+        <div class="caption-title">ENTULHO NO CHÃO</div>
+        <div class="caption-desc">Com muito lixo jogado no chão atrapalhando a passagem</div>
+      </div>
+      <div class="post-footer">
+        <!-- Coração -->
+        <span class="material-symbols-outlined coracao">♡</span>
+        <!-- Chat -->
+        <span class="material-symbols-outlined msg-icon" data-post="1">💬</span>
+        <!-- Compartilhar -->
+        <button>🔗</button>
+      </div>
+    </div>
+
+    <!-- Modal do post 2-->
+    <div class="modal" id="modal1">
+      <div class="modal-content">
+        <h3>Comentários</h3>
+        <textarea placeholder="Escreva seu comentário..."></textarea>
+        <button id="close1">Fechar</button>
+      </div>
+    </div>
+
+        <!-- Post 2 -->
+    <div class="post-container">
+      <div class="post-header">
+        <div class="user">
+          <img src="yr10.jpg" alt="Logo" class="logo-img">Yuri Alberto 
+          <div><BR>
+      <span class="location">Rua X, Londrina - PR</span>
+            </div></BR>
+        </div>
+        <div class="time">10 horas atrás</div>
+      </div>
+      <div class="post-image">
+        <img src="pq2.png" alt="Imagem do post">
+      </div>
+      <div class="post-caption">
+        <div class="caption-title">BRINQUEDO QUEBRADO</div>
+        <div class="caption-desc">Brinquedo quebrado na praça</div>
+      </div>
+      <div class="post-footer">
+        <!-- Coração -->
+        <span class="material-symbols-outlined coracao">♡</span>
+        <!-- Chat -->
+        <span class="material-symbols-outlined msg-icon" data-post="1">💬</span>
+        <!-- Compartilhar -->
+        <button>🔗</button>
+      </div>
+    </div>
+
+    <!-- Modal do post 3 -->
+    <div class="modal" id="modal1">
+      <div class="modal-content">
+        <h3>Comentários</h3>
+        <textarea placeholder="Escreva seu comentário..."></textarea>
+        <button id="close1">Fechar</button>
+      </div>
+    </div>
+
+        <div class="post-container">
+      <div class="post-header">
+        <div class="user">
+          <img src="garro.png" alt="Logo" class="logo-img">Rodrigo Garro
+        </div>
+        <div class="time">40 horas atrás</div>
+      </div>
+      <div class="post-image">
+        <img src="pq3.png" alt="Imagem do post">
+      </div>
+      <div class="post-caption">
+        <div class="caption-title">LIXO NO CHÃO</div>
+        <div class="caption-desc">Parece que reviraram a lixeira</div>
+      </div>
+      <div class="post-footer">
+        <!-- Coração -->
+        <span class="material-symbols-outlined coracao">♡</span>
+        <!-- Chat -->
+        <span class="material-symbols-outlined msg-icon" data-post="1">💬</span>
+        <!-- Compartilhar -->
+        <button>🔗</button>
+      </div>
+    </div>
+
+    <!-- Modal do post 3 -->
+    <div class="modal" id="modal1">
+      <div class="modal-content">
+        <h3>Comentários</h3>
+        <textarea placeholder="Escreva seu comentário..."></textarea>
+        <button id="close1">Fechar</button>
+      </div>
+    </div>
+    <!-- Menu inferior -->
+     
+    <footer>
+<a href="mapa.html" title="Mapa">
+  <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#000000">
+    <path d="m608-120-255.33-90-181.34 71.33q-18 8.67-34.66-2.16Q120-151.67 120-172v-558.67q0-13 7.5-23t19.83-15L352.67-840 608-750.67 788.67-822q18-8 34.66 2.5Q840-809 840-788.67v563.34q0 11.66-7.5 20.33-7.5 8.67-19.17 13L608-120Zm-36-82.67v-492.66L388-758v492.67l184 62.66Zm66.67 0 134.66-44.66v-499.34l-134.66 51.34v492.66Zm-452-11.33 134.66-51.33V-758l-134.66 44.67V-214Zm452-481.33v492.66-492.66ZM321.33-758v492.67V-758Z"/>
+  </svg>
+</a>    
+      <button>🔍</button>
+      <button>➕</button>
+      <button>🔔</button>
+      <button>👤</button>
+    </footer>
+  </div>
+
+<style>
+          .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+        img {
+        width: 100px;
+        }
+</style>
+  <script src="script.js"></script>
+</body>
+</html>
