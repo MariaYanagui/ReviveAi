@@ -8,11 +8,24 @@
     <title>Cadastro - ReviveAI</title>
 </head>
 <body>
-    <a href="login.html" class="voltar" onclick="history.back();"> <img src="voltar.png" alt=></a>
     <div class="container">
+        <!-- Botão voltar funcional -->
+        <a href="inicio.html" class="voltar" onclick="history.back();"> <img src="voltar.png" alt=></a>
+
         <div class="logo">
             <img src="logo_versao01_preenchida.png" alt="Logo ReviveAI">
-        </div>        
+        </div>        <br>
+        <div class="container">
+            <h2>Editar Perfil</h2>
+         
+            <!-- Foto de Perfil -->
+<section class="foto-perfil-sec">
+    <img src="ey.jpg" alt="Foto de Perfil" class="foto-perfil" id="preview">
+</section>
+         
+            <div class="input-foto">
+            <input type="file" accept="image/*" id="fotoInput">
+            </div>
         <form>
             <label for="cep">CEP</label>
             <input type="text" id="cep" placeholder="SEU CEP" required>
@@ -36,6 +49,25 @@
         </form>
     </div>
     <style>
+ .input-foto {
+      margin-bottom: 20px;
+      display: center;
+      align-items: center;
+        justify-content: center;
+      
+    }
+         .foto-perfil {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #4CAF50;
+     
+   }
+    h2{
+        font-size: larger;
+        text-align: center;       
+    }
         body {
     font-family: 'Petrona', serif;
 }
@@ -60,12 +92,12 @@
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        width: 90%; /* Responsivo */
+        
         max-width: 400px;
     }
     
     img {
-        width: 150px;
+        width: 80px;
         }
     
     
@@ -104,59 +136,45 @@
         align-items: center;
         justify-content: center;
     }
-</style>
-<script>
-    document.getElementById("cep").addEventListener("blur", function() {
-        let cep = this.value.replace(/\D/g, '');
-        if (cep.length === 8) {
-            fetch(`https://viacep.com.br/ws/${cep}/json/`)
-                .then(response => response.json())
-                .then(data => {
-                    if (!("erro" in data)) {
-                    } else {
-                        alert("CEP não encontrado!");
-                    }
-                })
-                .catch(error => {
-                    alert("Erro ao buscar CEP!");
-                    console.error(error);
-                });
-        } else {
-            alert("CEP inválido! Digite 8 números.");
-        }
-    });
+    .voltar {
+        align-self: flex-start;
+        margin-bottom: 20px;
+        color: #ACD7F2;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 160px;
+        text-decoration: none;
+    }
+    .voltar img{
+        width: 20px;
+        height: 20px;
+    }
 
-    const telefoneInput = document.getElementById("telefone");
- 
- telefoneInput.addEventListener("input", function(e) {
-     let value = e.target.value.replace(/\D/g, ""); // só números
+    .foto-perfil-sec{
+        display: flex;
+    }
 
-     if (value.length > 11) value = value.slice(0, 11);
-
-     if (value.length > 10) {
-         // celular (99) 99999-9999
-         value = value.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
-     } else if (value.length > 6) {
-         // fixo (99) 9999-9999
-         value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
-     } else if (value.length > 2) {
-         value = value.replace(/(\d{2})(\d{0,5})/, "($1) $2");
-     } else {
-         value = value.replace(/(\d*)/, "($1");
-     }
-
-     e.target.value = value;
- });
-
- // Validação extra no envio do formulário
- document.querySelector("form").addEventListener("submit", function(e) {
-     const regexTelefone = /^\(\d{2}\)\s?\d{4,5}-\d{4}$/;
-     if (!regexTelefone.test(telefoneInput.value)) {
-         e.preventDefault();
-         alert("Telefone inválido! Use o formato (99) 99999-9999 ou (99) 9999-9999");
-     }
- });
-</script>
-
-</body>
-</html> 
+    .foto-perfil-sec {
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    </style>
+    <script>
+        const fotoInput = document.getElementById("fotoInput");
+        const preview = document.getElementById("preview");
+     
+        fotoInput.addEventListener("change", function() {
+          const file = this.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              preview.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+          }
+        });
+      </script>    
+ </body>    
+</html>
