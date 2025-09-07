@@ -13,8 +13,8 @@
 
         <div class="logo">
             <img src="logo_versao01_preenchida.png" alt="Logo ReviveAI">
-        </div>        
-        <div class="forms">
+        </div>    
+  
 <form id="formulario" action="inicio.html" method="POST">
 <label for="cep">CEP</label>
 <input type="text" id="cep" placeholder="Digite seu CEP" required>
@@ -57,11 +57,12 @@
     }
     
     body {
-        background-color: #ffffff; /* Azul claro */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+    margin: 0;
+    padding: 40px 0 0 0; /* Adiciona espaço no topo */
+    font-family: Arial, sans-serif; /* opcional para melhorar visual */
+    background-color: #f0f0f0; /* opcional para contraste */
+    display: flex;
+    justify-content: center;
     }
     
     .container {
@@ -76,8 +77,6 @@
     img {
         width: 150px;
         }
-    
-    
     form {
         display: flex;
         flex-direction: column;
@@ -120,6 +119,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-bottom: 20px; 
     }
                 .voltar {
         align-self: flex-start;
