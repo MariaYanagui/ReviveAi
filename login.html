@@ -7,6 +7,8 @@
 </head>
 <body>
       <div class="container">
+        <a href="boasvindas.html" class="voltar" onclick="history.back();"> <img src="voltar.png" alt=></a>
+
         <div class="logo">
             <img src="logo_versao01_preenchida.png" alt="Logo ReviveAI">
         </div>        
@@ -18,13 +20,28 @@
             <input type="password" id="senha" placeholder="DIGITE SUA SENHA" required><br>
 
             <p style="font-size: small;"><a href="redefinir.html">Esquecei minha senha!</a></p>
-            <button a href="ini" type="submit">ACESSAR</button>
+    <a href="inicio.html" class="btn">Entrar</a>
 
             <p style="font-size: small;"><a href="cadastro.html">Não tem conta? Cadastre aqui</a></p>
     
         </form>
     </div>
     <style>
+            .voltar {
+        align-self: flex-start;
+        margin-bottom: 20px;
+        color: #ACD7F2;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 10px;
+        text-decoration: none;
+    }
+    .voltar img{
+        width: 20px;
+        height: 20px;
+    }
+
         body {
     font-family: 'Petrona', serif;
 }
@@ -77,16 +94,21 @@
     input:focus {
         border-color: #ACD7F2; /* Cor ao focar */
     }
-    
     .btn {
-        font-family: 'Petrona', serif;
-        padding: 10px;
-        background-color: #192710; /* Botão verde escuro */
-        color: #ACD7F2;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 15px;
+      display: block;
+      background: #192710;
+      margin: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      transition: 0.3s;
+      text-align: center;
+    }
+    .btn:hover {
+      background: #45a049;
+      transform: scale(1.05);
     }
     .logo {
         display: flex;
@@ -97,29 +119,8 @@
         text-align: center;
         font-family: 'Petrona', serif;
     }
+
 </style>
-<<<<<<< HEAD
-</head>
-<body>
-      <div class="container">
-        <div class="logo">
-            <img src="logo_versao01_preenchida.png" alt="Logo ReviveAI">
-        </div>        
-        <form>
-            <label for="email">E-MAIL</label>
-            <input type="email" id="email" placeholder="DIGITE SEU E-MAIL" required>
 
-            <label for="nome">SENHA</label>
-            <input type="password" id="senha" placeholder="DIGITE SUA SENHA" required><br>
-
-            <p style="font-size: small;"><a href="redefinir.html">Esquecei minha senha!</a></p> <br>
-    <a href="inicio.html" class="btn">Acessar</a>
-
-            <p style="font-size: small;"><a href="cadastro.html">Não tem conta? Cadastre aqui</a></p>
-    
-        </form>
-    </div>
-=======
->>>>>>> 213c4cfcf81faebc85167aae0de7f70c8fcbf686
 </body>
 </html>
