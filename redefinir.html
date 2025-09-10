@@ -80,15 +80,23 @@
       border-color: #acd7f2;
     }
 
-    button[type="submit"] {
-      font-family: 'Petrona', serif;
+    .btn {
+      display: block;
+      background: #192710;
+      margin: 10px;
       padding: 10px;
-      background-color: #192710;
-      color: #acd7f2;
       border: none;
       border-radius: 5px;
-      cursor: pointer;
-      margin-top: 15px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      transition: 0.3s;
+      text-align: center;
+    }
+    .btn:hover {
+      background: #45a049;
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -109,9 +117,28 @@
     <form action="senha.html" method="POST">
       <label for="email">E-MAIL</label>
       <input type="email" id="email" name="email" placeholder="DIGITE SEU E-MAIL" required>
-    <a href="senha.html" class="btn">Enviar</a>
+
+      <button type="senha.html" class="btn">Enviar</button>
 
     </form>
   </div>
+  <script>
+function validaEmail(email) {
+  function validarEmail(email) {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(email.toLowerCase());
+  }
+
+  document.getElementById("formRecuperar").addEventListener("submit", function(e) {
+    const email = document.getElementById("email").value.trim();
+
+    if (!validarEmail(email)) {
+      e.preventDefault(); // impede de ir para outra página
+      alert("Por favor, insira um e-mail válido!");
+    }
+    // Se for válido → o form segue normalmente para senha.html
+  });
+}
+  </script>
 </body>
 </html>
