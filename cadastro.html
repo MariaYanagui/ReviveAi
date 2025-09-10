@@ -8,32 +8,41 @@
     <title>Cadastro - ReviveAI</title>
 </head>
 <body>
-    <a href="login.html" class="voltar" onclick="history.back();"> <img src="voltar.png" alt=></a>
     <div class="container">
+        <a href="boasvindas.html" class="voltar" onclick="history.back();"> <img src="voltar.png" alt=></a>
+
         <div class="logo">
             <img src="logo_versao01_preenchida.png" alt="Logo ReviveAI">
-        </div>        
-        <form>
-            <label for="cep">CEP</label>
-            <input type="text" id="cep" placeholder="SEU CEP" required>
+        </div>    
+  
+<form id="formulario" action="inicio.html" method="POST">
+<label for="cep">CEP</label>
+<input type="text" id="cep" placeholder="Digite seu CEP" required>
+<label for="rua">RUA</label>
+<input type="text" id="rua" placeholder="Digite sua rua" required>
+<label for="numero">NÚMERO</label>
+<input type="text" id="numero" placeholder="Digite seu número" required>
+<label for="bairro">BAIRRO</label>
+<input type="text" id="bairro" placeholder="Digite seu bairro" required>
+<label for="cidade">CIDADE</label>
+<input type="text" id="cidade" placeholder="Digite sua cidade" required>
+<label for="estado">ESTADO</label>
+<input type="text" id="estado" placeholder="Digite a UF do seu stado" required maxlength="2">
+<label for="email">EMAIL</label>
+<input type="email" id="email" placeholder="Digite seu E-mail" required>
+<label for="senha">SENHA</label>
+<input type="password" id="senha" placeholder="Digite sua senha" required>
+<label for="nome">NOME</label>
+<input type="text" id="nome" placeholder="Digite seu nome" required>
+<label for="telefone">TELEFONE</label>
+<input type="tel" id="telefone" placeholder="Digite seu telefone" required>
+<label for="data-nascimento">DATA DE NASCIMENTO</label>
+<input type="date" id="data-nascimento" placeholder="" required>
 
-            <label for="email">E-MAIL</label>
-            <input type="email" id="email" placeholder="DIGITE SEU E-MAIL" required>
+    <a href="inicio.html" class="btn">Cadastrar</a>
 
-            <label for="senha">SENHA</label>
-            <input type="password" id="senha" placeholder="DIGITE SUA SENHA" required>
-
-            <label for="nome">NOME</label>
-            <input type="text" id="nome" placeholder="DIGITE SEU NOME" required>
-
-            <label for="telefone">TELEFONE</label>
-            <input type="tel" id="telefone" placeholder="DIGITE SEU TELEFONE" required>
-
-            <label for="data-nascimento">DATA DE NASCIMENTO</label>
-            <input type="date" id="data-nascimento" required>
-
-            <button type="submit">ACESSAR</button>
-        </form>
+</form>
+</div>
     </div>
     <style>
         body {
@@ -48,11 +57,12 @@
     }
     
     body {
-        background-color: #ffffff; /* Azul claro */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+    margin: 0;
+    padding: 40px 0 0 0; /* Adiciona espaço no topo */
+    font-family: Arial, sans-serif; /* opcional para melhorar visual */
+    background-color: #f0f0f0; /* opcional para contraste */
+    display: flex;
+    justify-content: center;
     }
     
     .container {
@@ -67,8 +77,6 @@
     img {
         width: 150px;
         }
-    
-    
     form {
         display: flex;
         flex-direction: column;
@@ -89,73 +97,154 @@
         border-color: #ACD7F2; /* Cor ao focar */
     }
     
-    button {
-        font-family: 'Petrona', serif;
-        padding: 10px;
-        background-color: #192710; /* Botão verde escuro */
-        color: #ACD7F2;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 15px;
+    .btn {
+      display: block;
+      background: #192710;
+      margin: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      transition: 0.3s;
+      text-align: center;
+    }
+    .btn:hover {
+      background: #45a049;
+      transform: scale(1.05);
     }
     .logo {
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-bottom: 20px; 
+    }
+                .voltar {
+        align-self: flex-start;
+        margin-bottom: 20px;
+        color: #ACD7F2;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 10px;
+        text-decoration: none;
+    }
+    .voltar img{
+        width: 20px;
+        height: 20px;
     }
 </style>
 <script>
-    document.getElementById("cep").addEventListener("blur", function() {
-        let cep = this.value.replace(/\D/g, '');
-        if (cep.length === 8) {
-            fetch(`https://viacep.com.br/ws/${cep}/json/`)
-                .then(response => response.json())
-                .then(data => {
-                    if (!("erro" in data)) {
-                    } else {
-                        alert("CEP não encontrado!");
-                    }
-                })
-                .catch(error => {
-                    alert("Erro ao buscar CEP!");
-                    console.error(error);
-                });
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("formulario");
+    const cepInput = document.getElementById("cep");
+    const telefoneInput = document.getElementById("telefone");
+    const emailInput = document.getElementById("email");
+
+    // ☎️ Máscara para telefone
+    telefoneInput.addEventListener("input", function (e) {
+        let value = e.target.value.replace(/\D/g, "");
+        if (value.length > 11) value = value.slice(0, 11);
+
+        if (value.length > 10) {
+            value = value.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+        } else if (value.length > 6) {
+            value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+        } else if (value.length > 2) {
+            value = value.replace(/(\d{2})(\d{0,5})/, "($1) $2");
         } else {
-            alert("CEP inválido! Digite 8 números.");
+            value = value.replace(/(\d*)/, "($1");
         }
+
+        e.target.value = value;
     });
 
-    const telefoneInput = document.getElementById("telefone");
- 
- telefoneInput.addEventListener("input", function(e) {
-     let value = e.target.value.replace(/\D/g, ""); // só números
+    // 🏠 Preenchimento automático do endereço via ViaCEP
+    cepInput.addEventListener("blur", function () {
+        const cep = cepInput.value.replace(/\D/g, '');
 
-     if (value.length > 11) value = value.slice(0, 11);
+        if (cep.length !== 8) {
+            alert("CEP inválido! Digite 8 números.");
+            return;
+        }
 
-     if (value.length > 10) {
-         // celular (99) 99999-9999
-         value = value.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
-     } else if (value.length > 6) {
-         // fixo (99) 9999-9999
-         value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
-     } else if (value.length > 2) {
-         value = value.replace(/(\d{2})(\d{0,5})/, "($1) $2");
-     } else {
-         value = value.replace(/(\d*)/, "($1");
-     }
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(res => res.json())
+            .then(data => {
+                if (!("erro" in data)) {
+                    // Preenche apenas se os campos existirem no HTML
+                    if (document.getElementById("rua")) document.getElementById("rua").value = data.logradouro || '';
+                    if (document.getElementById("bairro")) document.getElementById("bairro").value = data.bairro || '';
+                    if (document.getElementById("cidade")) document.getElementById("cidade").value = data.localidade || '';
+                    if (document.getElementById("estado")) document.getElementById("estado").value = data.uf || '';
+                } else {
+                    alert("CEP não encontrado.");
+                }
+            })
+            .catch(() => {
+                alert("Erro ao buscar o CEP.");
+            });
+    });
 
-     e.target.value = value;
- });
+    // 📤 Validação completa ao enviar o formulário
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault(); // Bloqueia envio até validar tudo
 
- // Validação extra no envio do formulário
- document.querySelector("form").addEventListener("submit", function(e) {
-     const regexTelefone = /^\(\d{2}\)\s?\d{4,5}-\d{4}$/;
-     if (!regexTelefone.test(telefoneInput.value)) {
-         e.preventDefault();
-         alert("Telefone inválido! Use o formato (99) 99999-9999 ou (99) 9999-9999");
-     }
- });
+        const camposObrigatorios = [
+            "cep", "email", "senha", "nome", "telefone", "data-nascimento",
+            "rua", "numero", "bairro", "cidade", "estado"
+        ];
+
+        const camposVazios = camposObrigatorios.filter(id => {
+            const el = document.getElementById(id);
+            return el && !el.value.trim();
+        });
+
+        if (camposVazios.length > 0) {
+            alert("Por favor, preencha todos os campos obrigatórios.");
+            return;
+        }
+
+        // 📧 Validação do e-mail
+        const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
+        if (!emailValido) {
+            alert("E-mail inválido!");
+            return;
+        }
+
+        // ☎️ Validação do telefone
+        const telefoneValido = /^\(\d{2}\)\s?\d{4,5}-\d{4}$/.test(telefoneInput.value);
+        if (!telefoneValido) {
+            alert("Telefone inválido! Use o formato (99) 99999-9999 ou (99) 9999-9999");
+            return;
+        }
+
+        // 🏠 Validação do CEP com a API ViaCEP
+        const cep = cepInput.value.replace(/\D/g, '');
+        if (cep.length !== 8) {
+            alert("CEP inválido! Deve conter 8 dígitos.");
+            return;
+        }
+
+        try {
+            const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+            const data = await res.json();
+            if ("erro" in data) {
+                alert("CEP não encontrado!");
+                return;
+            }
+
+            // ✅ Tudo certo — envia o formulário
+            form.submit();
+
+        } catch (error) {
+            alert("Erro ao validar o CEP.");
+            console.error(error);
+        }
+    });
+});
 </script>
 
 </body>

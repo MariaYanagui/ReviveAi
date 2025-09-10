@@ -23,3 +23,4 @@ closeButtons.forEach(btn => {
     btn.closest(".modal").classList.remove("show");
   });
 });
+
